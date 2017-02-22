@@ -23,9 +23,9 @@ export default class Main extends React.Component {
 	};
 
 	render() {
+		//<button onClick={this.toggleSync}>{this.state.sync ? 'stop' : 'start'} syncing tweets</button>
 		return (
 			<div>
-				<button onClick={this.toggleSync}>{this.state.sync ? 'stop' : 'start'} syncing tweets</button>
 				<TweetList tweets={this.state.tweetList} />
 			</div>
 		);

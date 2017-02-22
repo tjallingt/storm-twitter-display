@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 function updateTweetList(socket) {
-	redis.lrange('tweetList', 0, -1).then((result) => {
+	redis.lrange('data:tweets:filtered', 0, -1).then((result) => {
 		const tweets = result.map(JSON.parse);
 		socket.emit('tweetList', tweets);
 	});

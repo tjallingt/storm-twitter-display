@@ -39,22 +39,38 @@ function getTweetDisplayText(tweet) {
 function Tweet({ tweet }) {
 	if (tweet.retweeted_status) {
 		return (
-			<li>
-				<b>@{tweet.user.screen_name}</b> retweeted:
-				<ul>
-					<Tweet tweet={tweet.retweeted_status} />
-				</ul>
-			</li>
+			<div style={styles.tweet}>
+				<p style={styles.title}>@{tweet.user.screen_name} retweeted</p>
+				<Tweet tweet={tweet.retweeted_status} />
+			</div>
 		);
 	}
 	const text = getTweetDisplayText(tweet);
 	// const media = getTweetEntities(tweet).media;
 	return (
-		<li>
-			<b>@{tweet.user.screen_name}</b>: {text}
-		</li>
+		<div style={styles.tweet}>
+			<p style={styles.title}>@{tweet.user.screen_name}</p>
+			{text}
+		</div>
 	);
 }
+
+const styles = {
+	tweet: {
+		border: '1px solid grey',
+		borderRadius: 4,
+		margin: 5,
+		padding: 10,
+		flex: '1 0 30%',
+		display: 'flex',
+		flexFlow: 'column wrap',
+		justifyContent: 'center',
+	},
+	title: {
+		fontWeight: 900,
+		margin: 0,
+	},
+};
 
 Tweet.propTypes = {
 	tweet: React.PropTypes.object.isRequired,

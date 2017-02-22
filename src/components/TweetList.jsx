@@ -4,7 +4,6 @@ import Tweet from './Tweet';
 
 export default class TweetList extends React.Component {
 	static propTypes = {
-		style: React.PropTypes.object,
 		tweets: React.PropTypes.array.isRequired,
 	};
 
@@ -14,9 +13,14 @@ export default class TweetList extends React.Component {
 		));
 
 		return (
-			<ul style={this.props.style}>
+			<div style={style} >
 				{list}
-			</ul>
+			</div>
 		);
 	}
 }
+
+const style = {
+	display: 'flex',
+	flexFlow: 'row wrap',
+};
